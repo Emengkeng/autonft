@@ -201,6 +201,9 @@ importers:
       '@ai16z/plugin-zksync-era':
         specifier: workspace:*
         version: link:../packages/plugin-zksync-era
+      '@v1/token-management':
+        specifier: workspace:*
+        version: link:../packages/token-management
       readline:
         specifier: 1.3.0
         version: 1.3.0

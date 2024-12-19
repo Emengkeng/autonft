@@ -53,6 +53,7 @@ import { suiPlugin } from "@ai16z/plugin-sui";
 import { TEEMode, teePlugin } from "@ai16z/plugin-tee";
 import { tonPlugin } from "@ai16z/plugin-ton";
 import { zksyncEraPlugin } from "@ai16z/plugin-zksync-era";
+import { TokenManager } from "@v1/token-management"
 import Database from "better-sqlite3";
 import fs from "fs";
 import path from "path";
@@ -629,6 +630,9 @@ async function startAgent(
 }
 
 const startAgents = async () => {
+    const tokenManager = new TokenManager(process.env.MONGO_DB_CRED_FOR_USER_TOKEN , 'token_db')
+    await tokenManager.connect();
+    
     const directClient = new DirectClient();
     const serverPort = parseInt(settings.SERVER_PORT || "3000");
     const args = parseArguments();
