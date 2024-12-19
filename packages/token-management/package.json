@@ -7,6 +7,7 @@
   "dependencies": {
     "@ai16z/eliza": "workspace:*",
     "@ai16z/plugin-trustdb": "workspace:*",
+    "@ai16z/eliza": "workspace:*",
     "mongodb": "^6.12.0"
   },
   "scripts": {

@@ -44,6 +44,9 @@ export async function validateTwitterConfig(
                 runtime.getSetting("MAX_TWEET_LENGTH") ||
                 process.env.MAX_TWEET_LENGTH ||
                 DEFAULT_MAX_TWEET_LENGTH.toString(),
+            MONGO_DB_CRED_FOR_USER_TOKEN:
+                runtime.getSetting("MONGO_DB_CRED_FOR_USER_TOKEN") ||
+                process.env.MONGO_DB_CRED_FOR_USER_TOKEN,
         };
 
         return twitterEnvSchema.parse(twitterConfig);

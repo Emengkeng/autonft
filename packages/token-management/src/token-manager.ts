@@ -2,6 +2,8 @@ import { MongoClient, Db, Collection, ObjectId } from 'mongodb';
 import { v4 as uuidv4 } from 'uuid';
 import { TokenAccount } from './models/token-account';
 import { TokenTransaction } from './models/token-transaction';
+import { elizaLogger } from "@ai16z/eliza";
+
 
 export class TokenManager {
   private client: MongoClient;
@@ -46,19 +48,27 @@ export class TokenManager {
   async getBalance(userId: string): Promise<number> {
     const account = await this.accountsCollection.findOne({ userId });
     if (!account) {
-      throw new Error(`No token account found for user ${userId}`);
+      elizaLogger.log(`No token account found for user ${userId}`);
     }
     return account.balance;
+  }
+
+  async findUser(userId: string): Promise<string> {
+    const account = await this.accountsCollection.findOne({ userId });
+    if (!account) {
+        elizaLogger.log(`No user with id: ${userId} found`);
+    }
+    return account.userId;
   }
 
   async deductTokens(userId: string, amount: number, description: string): Promise<TokenTransaction> {
     const account = await this.accountsCollection.findOne({ userId });
     if (!account) {
-      throw new Error(`No token account found for user ${userId}`);
+        elizaLogger.log(`No token account found for user ${userId}`);
     }
 
     if (account.balance < amount) {
-      throw new Error('Insufficient token balance');
+        elizaLogger.log('Insufficient token balance');
     }
 
     const transaction: TokenTransaction = {
@@ -93,7 +103,7 @@ export class TokenManager {
   async creditTokens(userId: string, amount: number, description: string): Promise<TokenTransaction> {
     const account = await this.accountsCollection.findOne({ userId });
     if (!account) {
-      throw new Error(`No token account found for user ${userId}`);
+        elizaLogger.log(`No token account found for user ${userId}`);
     }
 
     const transaction: TokenTransaction = {
