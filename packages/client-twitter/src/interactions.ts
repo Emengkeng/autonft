@@ -15,6 +15,7 @@ import {
     elizaLogger,
     getEmbeddingZeroVector,
 } from "@ai16z/eliza";
+import { TokenManager } from "@v1/token-management"
 import { ClientBase } from "./base";
 import { buildConversationThread, sendTweet, wait } from "./utils.ts";
 

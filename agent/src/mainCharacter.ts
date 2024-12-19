@@ -18,6 +18,9 @@ function getEnabledClients(): Clients[] {
     if (process.env.FARCASTER_ENABLED === 'true') {
       enabledClients.push(Clients.FARCASTER);
     }
+    if (process.env.DIRECT_ENABLED === 'true'){
+        enabledClients.push(Clients.DIRECT)
+    }
 
     // If no clients are enabled, return default client
     if (enabledClients.length === 0) {
