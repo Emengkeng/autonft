@@ -19,14 +19,22 @@
     "@tanstack/react-query": "5.61.0",
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
+    "gsap": "^3.12.5",
     "lucide-react": "0.460.0",
+    "normalize.css": "^8.0.1",
     "react": "18.3.1",
+    "react-confetti": "^6.1.0",
     "react-dom": "18.3.1",
     "react-router-dom": "6.22.1",
+    "react-use": "^17.6.0",
+    "styled-components": "^6.1.13",
+    "swiper": "^11.1.15",
     "tailwind-merge": "2.5.5",
     "tailwindcss-animate": "1.0.7",
+    "typewriter-effect": "^2.21.0",
     "vite-plugin-top-level-await": "1.4.4",
-    "vite-plugin-wasm": "3.3.0"
+    "vite-plugin-wasm": "3.3.0",
+    "web-vitals": "^4.2.4"
   },
   "devDependencies": {
     "@eslint/js": "9.16.0",
