@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Node.js version check
-REQUIRED_NODE_VERSION=22
+REQUIRED_NODE_VERSION=23
 CURRENT_NODE_VERSION=$(node -v | cut -d'.' -f1 | sed 's/v//')
 
 # Compare Node versions
@@ -16,8 +16,11 @@ if ! command -v pnpm >/dev/null 2>&1; then
     exit 1
 fi
 
+# Store the root directory path
+ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+
 # Navigate to project root
-cd "$(dirname "$0")"/.. || exit 1
+cd "$ROOT_DIR" || exit 1
 
 # Clean cache
 echo "\033[1mCleaning cache...\033[0m"
@@ -39,6 +42,19 @@ if ! pnpm build; then
     echo "\033[1;31mFailed to build project.\033[0m"
     exit 1
 fi
+
+# Navigate to nft generation package
+cd "$ROOT_DIR/packages/plugin-nft-generation" || exit 1
+
+# Build nft generation package
+echo "\033[1mBuilding NFT generation package...\033[0m"
+if ! pnpm build; then
+    echo "\033[1;31mFailed to build nft generation package.\033[0m"
+    exit 1
+fi
+
+# Navigate back to root
+cd "$ROOT_DIR" || exit 1
 
 # Start project
 echo "\033[1mStarting project...\033[0m"
