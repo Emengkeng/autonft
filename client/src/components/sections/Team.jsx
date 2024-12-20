@@ -151,4 +151,4 @@ const Position = styled.h2`
   font-weight: 400;
 `;
 
-export default Team;
+export {Team};

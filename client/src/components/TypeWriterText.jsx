@@ -107,4 +107,4 @@ const ButtonContainer = styled.div`
     }
   }
 `;
-export default TypeWriterText;
+export {TypeWriterText};

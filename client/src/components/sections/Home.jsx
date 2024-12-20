@@ -124,4 +124,4 @@ const Circle = styled.span`
   }
 `;
 
-export default Home;
+export {Home};

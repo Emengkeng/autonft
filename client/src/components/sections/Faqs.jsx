@@ -140,4 +140,4 @@ const Box = styled.div`
   }
 `;
 
-export default Faqs;
+export {Faqs};

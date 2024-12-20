@@ -173,4 +173,4 @@ const Price = styled.div`
   }
 `;
 
-export default Showcase;
+export {Showcase};

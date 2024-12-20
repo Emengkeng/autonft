@@ -252,4 +252,4 @@ const Text = styled.span`
   }
 `;
 
-export default Roadmap;
+export {Roadmap};

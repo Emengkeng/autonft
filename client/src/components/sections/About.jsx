@@ -175,4 +175,4 @@ const ButtonContainer = styled.div`
   }
 `;
 
-export default About;
+export {About};
